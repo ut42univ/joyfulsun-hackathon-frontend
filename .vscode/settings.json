@@ -1,0 +1,19 @@
+{
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "cSpell.ignorePaths": [
+    ".gitignore",
+    "package.json",
+    "package-lock.json",
+    "yarn.lock",
+    "node_modules",
+    ".vscode",
+    ".env",
+    "public",
+    "build",
+    "dist"
+  ]
+}
