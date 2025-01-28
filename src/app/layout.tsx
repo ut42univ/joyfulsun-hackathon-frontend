@@ -19,7 +19,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ja">
-      <body className={notoSansJP.className}>
+      <body
+      // className={notoSansJP.className}
+      >
         <Header />
         {children}
       </body>
