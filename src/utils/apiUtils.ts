@@ -1,17 +1,32 @@
 import { PosResponse } from "@/types";
 import axios, { AxiosInstance } from "axios";
 
-const API_URL = process.env.API_URL || "http://localhost:8000";
+const API_URL: string = process.env.API_URL || "http://localhost:8000";
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: API_URL,
 });
 
-export const checkConnection = async (): Promise<boolean> => {
+// 一定時間内にサーバーとの接続ができるか確認する
+export const checkConnection = async (
+  timeout: number = 5000
+): Promise<boolean> => {
   try {
-    await apiClient.get("/").then((res) => res.data);
+    const source = axios.CancelToken.source();
+    const timer = setTimeout(() => {
+      source.cancel();
+    }, timeout);
+
+    const res = await apiClient.get("/connection", {
+      cancelToken: source.token,
+    });
+    clearTimeout(timer);
+
+    if (res.status !== 200) {
+      return false;
+    }
     return true;
-  } catch (e) {
+  } catch (error) {
     return false;
   }
 };
