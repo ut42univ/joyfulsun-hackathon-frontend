@@ -22,7 +22,7 @@ const RootLayout = ({
       <body
       // className={notoSansJP.className}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
