@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from "react";
 
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
+import { SearchForm } from "@/components/search-form";
+import { VersionSwitcher } from "@/components/version-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,139 +13,96 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
+  versions: [
+    "江川本店",
+    "城栄店",
+    "本原店",
+    "大浦店",
+    "新大工町ファンスクエア店",
+    "住吉店",
+    "宝町店",
+    "時津店",
+    "山里店",
+  ],
   navMain: [
     {
-      title: "Getting Started",
+      title: "店舗情報",
+      url: "about",
+      items: [
+        {
+          title: "店舗概要",
+          url: "dashboard",
+        },
+      ],
+    },
+    {
+      title: "ランキング",
       url: "#",
       items: [
         {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
+          title: "商品ランキング",
           url: "#",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "POSデータ分析",
       url: "#",
       items: [
         {
-          title: "Routing",
+          title: "ABC分析",
           url: "#",
         },
         {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
+          title: "RFM分析",
           url: "#",
         },
         {
-          title: "Caching",
+          title: "売上分析",
           url: "#",
         },
         {
-          title: "Styling",
+          title: "在庫分析",
           url: "#",
         },
         {
-          title: "Optimizing",
+          title: "顧客分析",
           url: "#",
         },
         {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
+          title: "商品分析",
           url: "#",
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "傾向分析",
       url: "#",
       items: [
         {
-          title: "Components",
+          title: "売上予測",
           url: "#",
         },
         {
-          title: "File Conventions",
+          title: "在庫予測",
           url: "#",
         },
         {
-          title: "Functions",
+          title: "顧客予測",
           url: "#",
         },
         {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
+          title: "商品予測",
           url: "#",
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -166,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
+                    <SidebarMenuButton asChild>
                       <a href={item.url}>{item.title}</a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -178,5 +135,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
