@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
-import { Header } from "@/components/layouts/Header";
+// import { Header } from "@/components/layouts/Header";
+import { VersionProvider } from "@/contexts/VersionContext";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -19,11 +20,11 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ja">
-      <body
-      // className={notoSansJP.className}
-      >
-        {/* <Header /> */}
-        {children}
+      <body>
+        <VersionProvider>
+          {/* <Header /> */}
+          {children}
+        </VersionProvider>
       </body>
     </html>
   );

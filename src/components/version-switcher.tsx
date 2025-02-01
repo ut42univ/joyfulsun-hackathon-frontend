@@ -14,6 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useVersion } from "@/contexts/VersionContext";
 
 export function VersionSwitcher({
   versions,
@@ -22,7 +23,7 @@ export function VersionSwitcher({
   versions: string[];
   defaultVersion: string;
 }) {
-  const [selectedVersion, setSelectedVersion] = React.useState(defaultVersion);
+  const { selectedVersion, setSelectedVersion } = useVersion();
   return (
     <SidebarMenu>
       <SidebarMenuItem>
