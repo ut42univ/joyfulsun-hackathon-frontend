@@ -1,7 +1,15 @@
-import React from "react";
+"use client";
 
-const page = () => {
-  return <div>page</div>;
+import { CustomBreadcrumb } from "@/components/layouts/CustomBreadcrumb";
+import { useVersion } from "@/contexts/VersionContext";
+
+const ABCAnalysisPage = () => {
+  const { selectedVersion } = useVersion();
+  return (
+    <div>
+      <CustomBreadcrumb selectedVersion={selectedVersion} pageName="ABC分析" />
+    </div>
+  );
 };
 
-export default page;
+export default ABCAnalysisPage;

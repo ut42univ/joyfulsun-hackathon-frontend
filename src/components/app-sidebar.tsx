@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { SearchForm } from "@/components/search-form";
 import { VersionSwitcher } from "@/components/version-switcher";
 import {
@@ -14,6 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // This is sample data.
 const data = {
@@ -31,11 +30,11 @@ const data = {
   navMain: [
     {
       title: "店舗情報",
-      url: "about",
+      url: "#",
       items: [
         {
           title: "店舗概要",
-          url: "dashboard",
+          url: "/dashboard",
         },
       ],
     },
@@ -55,11 +54,11 @@ const data = {
       items: [
         {
           title: "ABC分析",
-          url: "#",
+          url: "/dashboard/analysis/abc",
         },
         {
           title: "RFM分析",
-          url: "#",
+          url: "/dashboard/analysis/rfm",
         },
         {
           title: "売上分析",
@@ -124,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>{item.title}</a>
+                      <Link href={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
