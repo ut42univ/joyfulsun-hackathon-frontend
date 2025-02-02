@@ -1,54 +1,27 @@
 "use client";
 
-import { AppSidebar } from "@/components/app-sidebar";
-import { Header } from "@/components/layouts/Header";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
+import { ChartTest } from "@/components/elements/chart";
+import { CustomBreadcrumb } from "@/components/layouts/CustomBreadcrumb";
 import { useVersion } from "@/contexts/VersionContext";
 
-export default function Page() {
+export default function DashboardHomePage() {
   const { selectedVersion } = useVersion();
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <Header />
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">{selectedVersion}</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Overview</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-neutral-100/50 dark:bg-neutral-800/50" />
-            <div className="aspect-video rounded-xl bg-neutral-100/50 dark:bg-neutral-800/50" />
-            <div className="aspect-video rounded-xl bg-neutral-100/50 dark:bg-neutral-800/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-neutral-100/50 md:min-h-min dark:bg-neutral-800/50" />
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div>
+      <CustomBreadcrumb selectedVersion={selectedVersion} pageName="店舗概要" />
+      <div className="p-4 space-y-4">
+        <h1 className="text-2xl font-bold">店舗概要</h1>
+        <p className="mt-2">
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+          ここに店舗概要の情報が入ります。ここに店舗概要の情報が入ります。
+        </p>
+      </div>
+      <ChartTest />
+    </div>
   );
 }
