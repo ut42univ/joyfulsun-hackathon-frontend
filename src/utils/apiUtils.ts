@@ -1,4 +1,4 @@
-import { ResPos } from "@/types";
+import { ResABC, ResPos, ResRFM } from "@/types";
 import axios, { AxiosInstance } from "axios";
 
 const API_URL: string = process.env.API_URL || "http://localhost:8000";
@@ -31,7 +31,21 @@ export const checkConnection = async (
   }
 };
 
-export const getAllData = async (table_name: string): Promise<ResPos> => {
+export const getAllData = async (table_name: string): Promise<ResPos[]> => {
   const res = await apiClient.get(`read/${table_name}`).then((res) => res.data);
+  return res;
+};
+
+export const getABCData = async (table_name: string): Promise<ResABC[]> => {
+  const res = await apiClient
+    .get(`read/${table_name}/abc`)
+    .then((res) => res.data);
+  return res;
+};
+
+export const getRFMData = async (table_name: string): Promise<ResRFM[]> => {
+  const res = await apiClient
+    .get(`read/${table_name}/rfm`)
+    .then((res) => res.data);
   return res;
 };
