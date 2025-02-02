@@ -1,4 +1,4 @@
-export type PosResponse = {
+export type ResPos = {
   store_id: number;
   store_name: string;
   receipt_id: number;
@@ -21,7 +21,7 @@ export type PosResponse = {
   gender: string | null;
 };
 
-export type ABCResponse = {
+export type ResABC = {
   category: string;
   price: number;
   sales: number;
@@ -29,7 +29,7 @@ export type ABCResponse = {
   classed_as: string;
 };
 
-export type RFMResponse = {
+export type ResRFM = {
   recency: number;
   frequency: number;
   monetary: number;

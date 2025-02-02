@@ -1,4 +1,4 @@
-import { PosResponse } from "@/types";
+import { ResPos } from "@/types";
 import axios, { AxiosInstance } from "axios";
 
 const API_URL: string = process.env.API_URL || "http://localhost:8000";
@@ -31,7 +31,7 @@ export const checkConnection = async (
   }
 };
 
-export const getAllData = async (table_name: string): Promise<PosResponse> => {
+export const getAllData = async (table_name: string): Promise<ResPos> => {
   const res = await apiClient.get(`read/${table_name}`).then((res) => res.data);
   return res;
 };
