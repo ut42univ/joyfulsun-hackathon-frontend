@@ -30,13 +30,16 @@ const chartConfig = {
 
 type ChartABCProps = {
   chartData: ResABC[];
+  title: string;
+  description: string;
 };
 
 export function ChartABC(props: ChartABCProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>パレート図 - Pareto Chart</CardTitle>
+        <CardTitle>{props.title}</CardTitle>
+        <CardDescription>{props.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -74,7 +77,7 @@ export function ChartABC(props: ChartABCProps) {
               yAxisId="left"
               type="monotone"
               stroke="var(--color-desktop)"
-              strokeWidth={2}
+              strokeWidth={3}
               dot={false}
             />
             <Line
@@ -83,7 +86,7 @@ export function ChartABC(props: ChartABCProps) {
               yAxisId="right"
               type="monotone"
               stroke="var(--color-mobile)"
-              strokeWidth={2}
+              strokeWidth={3}
               dot={false}
             />
           </LineChart>
