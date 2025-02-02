@@ -1,13 +1,11 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -17,14 +15,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
+import { ResABC } from "@/types";
 
 const chartConfig = {
   desktop: {
@@ -37,41 +28,59 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartABC() {
+type ChartABCProps = {
+  chartData: ResABC[];
+};
+
+export function ChartABC(props: ChartABCProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>パレート図 - Pareto Chart</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <LineChart
             accessibilityLayer
-            data={chartData}
+            data={props.chartData}
             margin={{
-              left: 12,
-              right: 12,
+              left: 16,
+              right: 16,
             }}
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="category"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
+            <YAxis
+              yAxisId="left"
+              domain={[0, "auto"]}
+              tickFormatter={(value) => `${Number(value).toLocaleString()}円`}
+            />
+            <YAxis
+              yAxisId="right"
+              domain={[0, 1]}
+              orientation="right"
+              tickFormatter={(value) => `${(value * 100).toFixed(1)}%`}
+            />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
-              dataKey="desktop"
+              dataKey="sales"
+              name="売上高"
+              yAxisId="left"
               type="monotone"
               stroke="var(--color-desktop)"
               strokeWidth={2}
               dot={false}
             />
             <Line
-              dataKey="mobile"
+              dataKey="cumulative_percentage"
+              name="累積構成比"
+              yAxisId="right"
               type="monotone"
               stroke="var(--color-mobile)"
               strokeWidth={2}
@@ -80,18 +89,6 @@ export function ChartABC() {
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total visitors for the last 6 months
-            </div>
-          </div>
-        </div>
-      </CardFooter>
     </Card>
   );
 }
