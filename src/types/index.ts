@@ -20,3 +20,20 @@ export type PosResponse = {
   age: number | null;
   gender: string | null;
 };
+
+export type ABCResponse = {
+  category: string;
+  price: number;
+  sales: number;
+  cumulative_percentage: number;
+  classed_as: string;
+};
+
+export type RFMResponse = {
+  recency: number;
+  frequency: number;
+  monetary: number;
+  r_score: number;
+  f_score: number;
+  m_score: number;
+};
